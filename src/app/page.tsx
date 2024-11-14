@@ -319,7 +319,8 @@ function Result({ result, index }: { result: any, index: number }) {
 function match(item: any, keyword: string, episode: string) {
   let ep: boolean = episode === '*' ? true : item.episode === episode;
   let text = item.text as string
-  return (ep && text.toLowerCase().includes(keyword.toLowerCase())) === true;
+  let text_sim = item.text_sim as string
+  return (ep && (text.toLowerCase().includes(keyword.toLowerCase()) || text_sim.toLowerCase().includes(keyword.toLowerCase()))) === true;
 }
 
 /*async function getSearchResultList0(keyword: string, episode: string) {
